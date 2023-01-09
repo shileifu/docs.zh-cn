@@ -1,4 +1,4 @@
-# 使用 StarRocks Operator 在 Kubernetes 部署和管理 CN 【公测中】
+#  CN On Kubernetes
 
 自 2.4 版本起，StarRocks 在 FE 、BE 节点基础上，提供了一种新的计算节点（Compute Node，以下简称 CN）。CN 是一种无状态的计算服务，自身不维护数据，可以承担部分 SQL 计算。并且支持基于 Kubernetes 的容器化部署，实现弹性伸缩，支撑数据湖分析等消耗大量计算资源的分析场景。
 
@@ -98,10 +98,11 @@ FE 按照数据分布情况和算子类型将执行计划中的计算任务分�
 
 ### 制作 CN 镜像
 
-1. 下载 StarRocks 的 Github 仓库代码。
+1. 下载[StarRocks-kubernetes-operator](https://github.com/StarRocks/starrocks-kubernetes-operator) 代码。单纯支持cn服务的operator已经封板分支为computenodegroup，如果只想在kubernetes部署CN服务请切换到远程computenodegroup分支。鉴于只有CN服务能够在kubernetes部署的局限性，StarRocks官网已经提供整体的所有服务在kubernetes上部署运行的解决方案，
+  整体部署StarRocks方案参考[StarRocks_ON_Kubernetes](./starrocks_on_kubernetes.md)
 
     ```Bash
-    git clone https://github.com/StarRocks/starrocks
+    git clone git@github.com:StarRocks/starrocks-kubernetes-operator.git
     ```
 
 2. 进入 **docker** 目录。
