@@ -4,29 +4,15 @@
 
 本文介绍如何使用 StarRocks Operator 在 Kubernetes 上部署 CN 并实现弹性伸缩。
 
-## 基本概念
+## 相关术语
 
-**Kubernetes**
-
-[Kubernetes](https://kubernetes.io/zh-cn/docs/home/) （以下简称 K8s）是一个开源的容器编排引擎，支持自动化部署、 扩缩和管理容器化应用。
-
-> 容器是可移植、可执行的轻量级镜像，镜像中包含应用以及相关依赖。
-
-**Operator**
-
-[Operator](https://kubernetes.io/zh-cn/docs/concepts/extend-kubernetes/operator/) 是 K8s 提供的一种的扩展软件，允许您通过**[定制资源](https://kubernetes.io/zh-cn/docs/concepts/extend-kubernetes/api-extension/custom-resources/)**来管理应用服务和组件。StarRocks Operator 能够将 StaRocks 所需的计算服务部署到云上，解放复杂的运维管理，实现计算资源自动弹性扩缩容。
-
-**Node**
-
-[Node](https://kubernetes.io/zh-cn/docs/concepts/architecture/nodes/) 是 K8s 集群中资源的实际供给方，是调度 Pod 运行的场所。在生产环境中，一个 K8s 集群通常由多个 Node 组成。
-
-**Pod**
-
-[Pod](https://kubernetes.io/zh-cn/docs/concepts/workloads/pods/) 是可以在 K8s 中创建、管理、可部署的最小计算单元，是一组共享存储网络资源的容器。
-
-**CN**
-
-CN 是 StarRocks 提供的一种无状态计算服务，自身不维护数据，可以承担执行计划中的部分计算。StarRocks operator 使用 HPA 感知 CN 所有实例的 CPU 和内存负载，并且根据您配置的策略自动扩缩 CN。
+| 名词                                                                                | 释义                                                                                                                                   |
+|:----------------------------------------------------------------------------------|:-------------------------------------------------------------------------------------------------------------------------------------|
+| [Kubernetes](https://kubernetes.io/zh-cn/docs/home/)                              | 简称K8s是一个开源的容器编排引擎，支持自动化部署、 扩缩和管理容器化应用的云调度系统。                                                                                         |  
+| [Operator](https://kubernetes.io/zh-cn/docs/concepts/extend-kubernetes/operator/) | 是K8s提供的一种的扩展软件，允许您通过**[定制资源](https://kubernetes.io/zh-cn/docs/concepts/extend-kubernetes/api-extension/custom-resources/)**来管理应用服务和组件 |
+| [Node](https://kubernetes.io/zh-cn/docs/concepts/architecture/nodes/)             | 是K8s集群中资源的实际供给方，是调度 Pod 运行的场所。在生产环境中，一个 K8s 集群通常由多个Node组成。                                                                           |  
+| [Pod](https://kubernetes.io/zh-cn/docs/concepts/workloads/pods/)                  | 是可以在 K8s 中创建、管理、可部署的最小计算单元，是一组共享存储网络资源的容器。  |  
+| CN                                                                                |CN 是 StarRocks 提供的一种无状态计算服务，自身不维护数据，可以承担执行计划中的部分计算。StarRocks operator 使用 HPA 感知 CN 所有实例的 CPU 和内存负载，并且根据您配置的策略自动扩缩 CN。|  
 
 ## 工作原理
 
