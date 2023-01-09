@@ -1,7 +1,7 @@
 # Deploy StarRocks in Kubernetes
 本页面展示如何在kubernetes部署一个starrocks集群服务。在kubernetes之上部署StarRocks可从以下方式选择其中一种完成。
-* [StarRocks Kubernetes Operator](https://github.com/StarRocks/starrocks-kubernetes-operator)
-* [Helm StarRocks on Kubernetes](https://github.com/StarRocks/helm-charts)
+* [Manual StarRocks on Kubernetesg](#operator)
+* [Helm StarRocks on Kubernetes](#helm)
 
 ## 开始之前
 ### Kuernetes相关术语： 
@@ -32,6 +32,8 @@ operator 1.2 版本之前适应kubernetes的版本1.23-1.25
 2. 使用eksctl创建集群，例如：  
    ``` eksctl create cluster --name cockroachdb --nodegroup-name standard-workers --node-type m5.xlarge --nodes 3 --nodes-min 1 --nodes-max 4 --node-ami auto ```
 
+<div id="operator"> </div>
+
 ## 2. 部署StarRocks
 ### [使用配置的方式](https://github.com/StarRocks/starrocks-kubernetes-operator)
 1. 为operator部署[custom resource definition (CRD)](https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/#customresourcedefinitions)
@@ -52,6 +54,8 @@ kubectl apply -f https://raw.githubusercontent.com/StarRocks/starrocks-kubernete
 
 4. 可参考[operator](https://github.com/StarRocks/starrocks-kubernetes-operator/tree/main/examples/starrocks) 仓库中使用用例配置和相关[api](https://github.com/StarRocks/starrocks-kubernetes-operator/blob/main/doc/api.md) 解释说明根据自己需要配置部署StarRocks集群。默认使用如下：
    ```kubectl apply -f https://raw.githubusercontent.com/StarRocks/starrocks-kubernetes-operator/blob/main/examples/starrocks/starrocks-fe-and-be.yaml```
+
+<div id="helm"> </div>
 
 ### [使用Helm的方式](https://github.com/StarRocks/helm-charts)
 1. 添加StarRocks的helm仓库。
