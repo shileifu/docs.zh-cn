@@ -25,9 +25,10 @@ operator 1.2 版本之前适应kubernetes的版本1.23-1.25
    这其中包括gcloud用户创建和删除kubernetes集群，还有kubectl在工作的机器上管理你kubernetes集群。
 2. 选择合适的region创建kubernetes集群
     ```gcloud container clusters create cockroachdb --machine-type n2-standard-4 --region {region-name} --num-nodes 1```
-### Hosted EKS
+
 <div id="eks"> </div>
 
+### Hosted EKS
 1. EKS创建之前，完成在[EKS Getting Started](https://docs.aws.amazon.com/eks/latest/userguide/getting-started-eksctl.html) 描述的所有前置操作。
 2. 使用eksctl创建集群，例如：  
    ``` eksctl create cluster --name cockroachdb --nodegroup-name standard-workers --node-type m5.xlarge --nodes 3 --nodes-min 1 --nodes-max 4 --node-ami auto ```
