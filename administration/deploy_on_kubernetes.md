@@ -1,6 +1,6 @@
 # Deploy StarRocks in Kubernetes
 本页面展示如何在kubernetes部署一个starrocks集群服务。在kubernetes之上部署StarRocks可从以下方式选择其中一种完成。
-* [Manual StarRocks on Kubernetesg](#operator)
+* [Manual StarRocks on Kubernetes](#operator)
 * [Helm StarRocks on Kubernetes](#helm)
 
 ## 开始之前
@@ -23,7 +23,7 @@ operator 1.2 版本之前适应kubernetes的版本1.23-1.25
 ### Hosted GKE
 1. GKE创建之前，完成在[Google Kubernetes Engine Quickstart](https://cloud.google.com/kubernetes-engine/docs/deploy-app-cluster) 描述的所有前置操作。  
    这其中包括gcloud用户创建和删除kubernetes集群，还有kubectl在工作的机器上管理你kubernetes集群。
-2. 选择合适的region创建kubernetes集群
+2. 选择合适的region创建kubernetes集群, 例如：  
     ```gcloud container clusters create cockroachdb --machine-type n2-standard-4 --region {region-name} --num-nodes 1```
 
 <div id="eks"> </div>
