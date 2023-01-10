@@ -18,9 +18,9 @@ operator 1.2 版本之前适应kubernetes的版本1.23-1.25
 ## 1. Start Kubernetes
 你可以使用自管的[Google Kubernetes Engine (GKE)](#gke) 服务或者自管的[Amazon Elastic Kubernetes Service (EKS)](#eks)快速部署kubernetes集群。
 
-### Hosted GKE
 <div id="gke"> </div>
 
+### Hosted GKE
 1. GKE创建之前，完成在[Google Kubernetes Engine Quickstart](https://cloud.google.com/kubernetes-engine/docs/deploy-app-cluster) 描述的所有前置操作。  
    这其中包括gcloud用户创建和删除kubernetes集群，还有kubectl在工作的机器上管理你kubernetes集群。
 2. 选择合适的region创建kubernetes集群
@@ -46,8 +46,7 @@ kubectl apply -f https://raw.githubusercontent.com/StarRocks/starrocks-kubernete
     a. 下载operator的manifest  
        ```curl -O https://raw.githubusercontent.com/StarRocks/starrocks-kubernetes-operator/main/deploy/operator.yaml```  
     b. 使用其他namespace，编辑manifest中所有`namespace: cockroach-operator-system`部分。  
-    c. 如果更改了默认配置，使用如下命令来部署operator:  
-       ```kubectl apply -f operator.yaml```  
+    c. 如果更改了默认配置，使用如下命令来部署operator: ```kubectl apply -f operator.yaml```    
     d. 使用默认的命令：  
        ```kubectl apply -f https://raw.githubusercontent.com/StarRocks/starrocks-kubernetes-operator/main/deploy/operator.yaml```
 3. 检测operator是否正在运行:  
@@ -61,13 +60,14 @@ kubectl apply -f https://raw.githubusercontent.com/StarRocks/starrocks-kubernete
 ### [使用Helm的方式](https://github.com/StarRocks/helm-charts)
 1. 添加StarRocks的helm仓库。
 ```helm repo add starrocks-community https://starrocks.github.io/helm-charts ```
-2. 更新仓库确保你使用的是最新的[starrocks chart](https://github.com/StarRocks/helm-charts) 
-3. operator和集群的配置信息都在helm chart [values.yaml](https://github.com/StarRocks/helm-charts/blob/main/charts/kube-starrocks/values.yaml)中。
-  a. 创建一个本地的YAML文件(例如：my-values.yaml), 可以被用来覆盖在values.yaml中默认的配置。
-  b. 如果全都使用默认配置不用创建。
-4. 安装StarRocks Helm Chart
-   a. ```helm install -f {custom-values}.yaml starrocks starrocks-community/kube-starrocks```
-   b. ``` helm install starrocks starrocks-community/kube-starrocks```
+2. 更新仓库确保你使用的是最新的[starrocks chart](https://github.com/StarRocks/helm-charts)
+   ```helm repo update```  
+3. operator和集群的配置信息都在helm chart [values.yaml](https://github.com/StarRocks/helm-charts/blob/main/charts/kube-starrocks/values.yaml)中。  
+  a. 创建一个本地的YAML文件(例如：my-values.yaml), 可以被用来覆盖在values.yaml中默认的配置。  
+  b. 如果全都使用默认配置不用创建。  
+4. 安装StarRocks Helm Chart  
+   a. ```helm install -f {custom-values}.yaml starrocks starrocks-community/kube-starrocks```  
+   b. ``` helm install starrocks starrocks-community/kube-starrocks```  
 
 ### 确认集群初始化成功
 ``` kubectl -n {custom-namespace} get pods ```
